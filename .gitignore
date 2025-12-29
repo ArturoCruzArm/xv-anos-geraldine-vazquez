@@ -1,12 +1,10 @@
-# Excluir las fotos (son demasiadas para GitHub)
-imagenes/*.webp
+# Excluir formatos no optimizados
 imagenes/*.jpg
 imagenes/*.jpeg
 imagenes/*.png
 imagenes/*.gif
 
-# Mantener la carpeta imagenes con un archivo README
-!imagenes/README.md
+# Los archivos WebP sí se suben (optimizados para web)
 
 # Archivos de sistema
 .DS_Store
