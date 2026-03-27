@@ -905,21 +905,18 @@ function openModal(index) {
     if (isVideo) {
         const videoId = getYouTubeId(photo);
         const embedUrl = getYouTubeEmbedUrl(videoId);
-        modalImageContainer.innerHTML = `
-            <iframe id="modalImage"
-                src="${embedUrl}"
-                frameborder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowfullscreen
-                class="youtube-iframe">
-            </iframe>
-            <div class="modal-photo-number" id="modalPhotoNumber">${displayNumber}</div>
-        `;
+        const iframe = document.createElement('iframe');
+        iframe.id = 'modalImage';
+        iframe.src = embedUrl;
+        iframe.frameBorder = '0';
+        iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
+        iframe.allowFullscreen = true;
+        iframe.className = 'youtube-iframe';
+        modalImageContainer.innerHTML = '';
+        modalImageContainer.appendChild(iframe);
     } else {
-        modalImageContainer.innerHTML = `
-            <img id="modalImage" src="${photo}" alt="${displayNumber}">
-            <div class="modal-photo-number" id="modalPhotoNumber">${displayNumber}</div>
-        `;
+        document.getElementById('modalImage').src = photo;
+        document.getElementById('modalImage').alt = displayNumber;
     }
 
     // Load current selections
