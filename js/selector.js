@@ -637,6 +637,11 @@ const photos = [
     'imagenes/IMG_9096.webp',
     'imagenes/IMG_9097.webp'
 ];
+// Thumbnail helper: usa thumb/ en grid para ahorrar RAM en moviles
+function getThumbPath(fullPath) {
+    return fullPath.replace('imagenes/', 'imagenes/thumb/');
+}
+
 
 const STORAGE_KEY = 'xv_anos_geraldine_vazquez_photo_selections';
 let photoSelections = {};
@@ -802,7 +807,7 @@ function renderGallery() {
         } else {
             mediaHTML = `
                 <div class="photo-image-container">
-                    <img src="${photo}" alt="${displayNumber}" loading="lazy">
+                    <img src="${getThumbPath(photo)}" alt="${displayNumber}" loading="lazy">
                 </div>
             `;
         }
